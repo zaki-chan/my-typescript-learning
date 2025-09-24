@@ -1,8 +1,16 @@
+// 常にサーバーサイドで実行される
+// クライアントサイドでもシームレスに呼び出し可能
+"use server";
+
+import { CAT_API_KEY } from "./env";
+
 type Image = {
     url:string;
 }
 export async function fetchImage():Promise<Image>{
-    const res = await fetch("https://api.thecatapi.com/v1/images/search");
+    const res = await fetch("https://api.thecatapi.com/v1/images/search",{
+        headers:{"x-api-key": CAT_API_KEY},
+    });
     const images: unknown = await res.json();
     console.log("fetchImage: 画像情報を取得しました",images);
     if(!isImageArray(images)){
