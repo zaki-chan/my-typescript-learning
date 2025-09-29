@@ -1,0 +1,8 @@
+// TypeScript ESLint:チェック時に型情報を利用するための、TSコンパイラの設定
+{
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+        "allowJs": true
+    },
+    "include": ["src",".*.js","*.js"]
+}
